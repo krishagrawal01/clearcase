@@ -1,0 +1,228 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #050d1f;
+  --foreground: #f0f4ff;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-foreground: #f0f4ff;
+  --popover: rgba(255, 255, 255, 0.04);
+  --popover-foreground: #f0f4ff;
+  --primary: #c9a84c;
+  --primary-foreground: #050d1f;
+  --secondary: #7b61ff;
+  --secondary-foreground: #f0f4ff;
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: #8892a4;
+  --accent: #7b61ff;
+  --accent-foreground: #f0f4ff;
+  --destructive: #ef4444;
+  --destructive-foreground: #f0f4ff;
+  --border: rgba(201, 168, 76, 0.2);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #c9a84c;
+  --radius: 0.75rem;
+  
+  /* Custom ClearCase colors */
+  --gold: #c9a84c;
+  --gold-glow: rgba(201, 168, 76, 0.3);
+  --purple: #7b61ff;
+  --purple-glow: rgba(123, 97, 255, 0.3);
+  --text-primary: #f0f4ff;
+  --text-secondary: #8892a4;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-gold: var(--gold);
+  --color-gold-glow: var(--gold-glow);
+  --color-purple: var(--purple);
+  --color-purple-glow: var(--purple-glow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom cursor */
+.custom-cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out;
+  box-shadow: 0 0 10px var(--gold-glow), 0 0 20px var(--gold-glow);
+}
+
+/* Animated background blobs */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: blob-float 20s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: #1a0a3e;
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: #0a1a2e;
+  top: 50%;
+  right: -150px;
+  animation-delay: -7s;
+}
+
+.blob-3 {
+  width: 450px;
+  height: 450px;
+  background: #0a2a2a;
+  bottom: -100px;
+  left: 30%;
+  animation-delay: -14s;
+}
+
+/* Gold shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    #e8d48a 25%,
+    var(--gold) 50%,
+    #e8d48a 75%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+}
+
+.gold-shimmer:hover {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+
+.glass-card-gold {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: var(--radius);
+}
+
+/* Pulse animation for badges */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--purple-glow); }
+  50% { box-shadow: 0 0 20px var(--purple-glow), 0 0 30px var(--purple-glow); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: var(--gold);
+}
+
+/* Dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
