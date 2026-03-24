@@ -9,6 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/chat', label: 'Legal Chat' },
   { href: '/documents', label: 'Documents' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/dashboard', label: 'Lawyer Portal' },
 ]
 
@@ -64,8 +65,17 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link href="/dashboard">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-4 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[rgba(201,168,76,0.3)] hover:border-[#c9a84c] transition-colors"
+              >
+                I'm a Lawyer
+              </motion.button>
+            </Link>
             <Link href="/chat">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -92,7 +102,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 border-t border-[rgba(255,255,255,0.08)]"
+            className="md:hidden absolute top-full left-0 right-0 bg-[#0f1e3d] border-t border-[rgba(255,255,255,0.08)] py-4 px-4 shadow-xl z-50"
           >
             {navLinks.map((link) => (
               <Link

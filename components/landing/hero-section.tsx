@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Lock, Zap, Scale } from 'lucide-react'
+import { DemoModal } from '@/components/demo-modal'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +30,8 @@ const itemVariants = {
 }
 
 export function HeroSection() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <motion.div
@@ -58,21 +62,22 @@ export function HeroSection() {
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Link href="/chat">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 justify-center mb-12 px-4 sm:px-0">
+          <Link href="/chat" className="w-full sm:w-auto">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="relative px-8 py-4 rounded-xl font-semibold text-[#050d1f] gold-shimmer shadow-lg shadow-[rgba(201,168,76,0.25)] flex items-center justify-center gap-2"
+              className="relative w-full sm:w-auto h-[52px] px-8 rounded-xl font-semibold text-[#050d1f] gold-shimmer shadow-lg shadow-[rgba(201,168,76,0.25)] flex items-center justify-center gap-2"
             >
               Get Started Free
               <span className="text-lg">→</span>
             </motion.button>
           </Link>
           <motion.button
+            onClick={() => setIsDemoOpen(true)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 rounded-xl font-semibold text-[#c9a84c] border border-[#c9a84c] bg-[#0f1e3d] transition-all duration-300 flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-[#c9a84c] hover:via-[#e8d48a] hover:to-[#c9a84c] hover:text-[#050d1f]"
+            className="w-full sm:w-auto h-[52px] px-8 rounded-xl font-semibold text-[#c9a84c] border border-[#c9a84c] bg-[#0f1e3d] transition-all duration-300 flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-[#c9a84c] hover:via-[#e8d48a] hover:to-[#c9a84c] hover:text-[#050d1f]"
           >
             Watch Demo
             <span className="text-lg">▶</span>
@@ -82,23 +87,25 @@ export function HeroSection() {
         {/* Trust Badges */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6 md:gap-8 text-[#8892a4] text-sm"
+          className="flex flex-nowrap justify-center gap-4 md:gap-8 text-[#8892a4] text-[11px] md:text-sm"
         >
-          <div className="flex items-center gap-2">
-            <Lock className="w-4 h-4 text-[#c9a84c]" />
+          <div className="flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+            <Lock className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#c9a84c] flex-shrink-0" />
             <span>100% Private</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-[#c9a84c]" />
+          <div className="flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+            <Zap className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#c9a84c] flex-shrink-0" />
             <span>Instant Answers</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Scale className="w-4 h-4 text-[#c9a84c]" />
+          <div className="flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+            <Scale className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#c9a84c] flex-shrink-0" />
             <span>India-specific Law</span>
           </div>
         </motion.div>
       </motion.div>
 
+      {/* Demo Modal */}
+      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </section>
   )
 }

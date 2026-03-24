@@ -15,7 +15,7 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section className="relative py-16 px-4" ref={ref}>
+    <section id="stats" className="relative py-16 px-4" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

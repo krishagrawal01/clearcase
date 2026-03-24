@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 
-export function CustomCursor() {
+function CustomCursorInner() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
-    
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
       setIsVisible(true)
@@ -29,8 +27,6 @@ export function CustomCursor() {
       document.body.removeEventListener('mouseenter', handleMouseEnter)
     }
   }, [])
-
-  if (!isMounted) return null
 
   return (
     <motion.div
@@ -52,3 +48,7 @@ export function CustomCursor() {
     />
   )
 }
+
+export const CustomCursor = dynamic(() => Promise.resolve(CustomCursorInner), {
+  ssr: false,
+})

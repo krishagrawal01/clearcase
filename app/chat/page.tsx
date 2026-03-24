@@ -6,6 +6,7 @@ import { ChatSidebar } from '@/components/chat/chat-sidebar'
 import { ChatMessages, type Message } from '@/components/chat/chat-messages'
 import { ChatInput } from '@/components/chat/chat-input'
 import { MobileNav } from '@/components/chat/mobile-nav'
+import { AlimonyCalculator } from '@/components/chat/alimony-calculator'
 import { CustomCursor } from '@/components/custom-cursor'
 
 const topicLabels: Record<string, string> = {
@@ -159,6 +160,9 @@ export default function ChatPage() {
           <ChatMessages messages={messages} isTyping={isTyping} />
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Alimony Calculator - Only show for Family Law topic */}
+        {activeTopic === 'family' && <AlimonyCalculator />}
 
         {/* Input */}
         <ChatInput onSend={handleSend} disabled={isTyping} />
