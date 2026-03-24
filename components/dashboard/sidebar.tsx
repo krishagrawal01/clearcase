@@ -36,10 +36,10 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - positioned below navbar */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-xl bg-[#111118] border border-[#1e1e2e] text-white"
+        className="lg:hidden fixed top-20 left-4 z-40 p-2.5 rounded-xl bg-[#111118] border border-[#1e1e2e] text-white"
       >
         <Menu className="w-5 h-5" />
       </button>
@@ -61,10 +61,10 @@ export function Sidebar() {
       <motion.aside
         initial={{ x: -280 }}
         animate={{ x: mobileOpen ? 0 : -280 }}
-        className={`lg:translate-x-0 fixed lg:sticky top-0 left-0 z-50 lg:z-30 h-screen w-[260px] bg-[#111118] border-r border-[#1e1e2e] flex flex-col transition-transform lg:transition-none`}
+        className={`lg:translate-x-0 fixed lg:sticky top-0 lg:top-0 left-0 z-50 lg:z-30 h-screen w-[260px] bg-[#111118] border-r border-[#1e1e2e] flex flex-col transition-transform lg:transition-none`}
       >
-        {/* Logo */}
-        <div className="p-6 border-b border-[#1e1e2e]">
+        {/* Logo - Only show on mobile, desktop uses Navbar */}
+        <div className="p-6 border-b border-[#1e1e2e] lg:hidden">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center">
               <Scale className="w-5 h-5 text-white" />
@@ -78,10 +78,23 @@ export function Sidebar() {
           {/* Mobile Close */}
           <button
             onClick={() => setMobileOpen(false)}
-            className="lg:hidden absolute top-6 right-4 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] text-[#94a3b8]"
+            className="absolute top-6 right-4 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] text-[#94a3b8]"
           >
             <X className="w-5 h-5" />
           </button>
+        </div>
+        
+        {/* Desktop: Show portal label */}
+        <div className="hidden lg:block p-6 border-b border-[#1e1e2e]">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center">
+              <Scale className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <span className="font-serif text-lg font-bold text-white">Lawyer Portal</span>
+              <span className="block text-xs text-[#94a3b8]">Dashboard</span>
+            </div>
+          </div>
         </div>
 
         {/* Navigation */}
