@@ -66,12 +66,12 @@ export function Navbar() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             <Link href="/get-help">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] overflow-hidden gold-shimmer"
+                className="relative px-4 py-2 rounded-md font-medium text-xs text-[#050d1f] overflow-hidden gold-shimmer"
               >
                 Start Free Consultation
               </motion.button>
@@ -80,7 +80,7 @@ export function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent hover:bg-[#c9a84c]/10 transition-colors"
+                className="px-4 py-2 rounded-md font-medium text-xs text-[#c9a84c] border border-[#c9a84c] bg-transparent hover:bg-[#c9a84c]/10 transition-colors"
               >
                 I'm a Lawyer
               </motion.button>
@@ -115,12 +115,12 @@ export function Navbar() {
               </Link>
             ))}
             <Link href="/get-help" onClick={() => setMobileMenuOpen(false)}>
-              <button className="w-full mt-4 px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] gold-shimmer">
+              <button className="w-full mt-3 px-4 py-2 rounded-md font-medium text-xs text-[#050d1f] gold-shimmer">
                 Start Free Consultation
               </button>
             </Link>
             <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-              <button className="w-full mt-3 px-5 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent">
+              <button className="w-full mt-2 px-4 py-2 rounded-md font-medium text-xs text-[#c9a84c] border border-[#c9a84c] bg-transparent">
                 I'm a Lawyer
               </button>
             </Link>

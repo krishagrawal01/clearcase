@@ -74,7 +74,7 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="stats" className="relative py-20 px-4" ref={ref}>
+    <section id="stats" className="relative py-10 px-4" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -87,58 +87,58 @@ export function StatsSection() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#c9a84c]/5 to-transparent blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#1a3a6e]/20 to-transparent blur-3xl" />
 
-          <div className="relative p-8 md:p-12">
+          <div className="relative p-6 md:p-8">
             {/* Header */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <motion.h3
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-serif text-2xl md:text-3xl font-bold text-[#f0f4ff] mb-2"
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="font-serif text-xl md:text-2xl font-bold text-[#f0f4ff] mb-1"
               >
                 Trusted by Thousands
               </motion.h3>
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-[#8892a4]"
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="text-[#8892a4] text-sm"
               >
                 Making legal help accessible across India
               </motion.p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.15 + index * 0.08 }}
                   className="relative text-center"
                 >
                   {/* Icon */}
-                  <div className="inline-flex p-3 rounded-xl bg-[rgba(201,168,76,0.1)] mb-4">
-                    <stat.icon className="w-6 h-6 text-[#c9a84c]" />
+                  <div className="inline-flex p-2 rounded-lg bg-[rgba(201,168,76,0.1)] mb-3">
+                    <stat.icon className="w-5 h-5 text-[#c9a84c]" />
                   </div>
 
                   {/* Number */}
-                  <div className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#c9a84c] mb-1">
+                  <div className="font-serif text-2xl md:text-3xl font-bold text-[#c9a84c] mb-0.5">
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} isInView={isInView} />
                   </div>
 
                   {/* Label */}
-                  <div className="text-[#f0f4ff] font-medium text-sm md:text-base mb-1">
+                  <div className="text-[#f0f4ff] font-medium text-xs md:text-sm mb-0.5">
                     {stat.label}
                   </div>
-                  <div className="text-[#8892a4] text-xs hidden md:block">
+                  <div className="text-[#8892a4] text-[10px] hidden md:block">
                     {stat.description}
                   </div>
 
                   {/* Divider for desktop */}
                   {index < stats.length - 1 && (
-                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-20 w-px bg-gradient-to-b from-transparent via-[rgba(201,168,76,0.2)] to-transparent" />
+                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-px bg-gradient-to-b from-transparent via-[rgba(201,168,76,0.2)] to-transparent" />
                   )}
                 </motion.div>
               ))}

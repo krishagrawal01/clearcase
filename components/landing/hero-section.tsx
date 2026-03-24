@@ -34,7 +34,7 @@ const chatMessages = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative pt-20 pb-12 overflow-hidden">
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(201,168,76,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(201,168,76,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
@@ -65,7 +65,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-16 pb-8 grid lg:grid-cols-2 gap-8 items-center">
         {/* Left side - Content */}
         <motion.div
           variants={containerVariants}
@@ -73,16 +73,10 @@ export function HeroSection() {
           animate="visible"
           className="text-center lg:text-left"
         >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#c9a84c] animate-pulse" />
-            <span className="text-[#c9a84c] text-sm font-medium">Trusted by 10,000+ Indians</span>
-          </motion.div>
-
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
           >
             <span className="text-[#f0f4ff]">Legal Clarity,</span>
             <br />
@@ -94,29 +88,29 @@ export function HeroSection() {
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-[#8892a4] max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
+            className="text-base md:text-lg text-[#8892a4] max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
           >
             Instant AI-powered guidance on divorce, challans, property disputes and more. 
             In English or Hindi. Available 24/7.
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
             <Link href="/get-help">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative w-full sm:w-auto h-[56px] px-10 rounded-xl font-semibold text-[#050d1f] gold-shimmer shadow-lg shadow-[rgba(201,168,76,0.25)] flex items-center justify-center gap-2"
+                className="relative w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-[#050d1f] gold-shimmer shadow-md shadow-[rgba(201,168,76,0.2)] flex items-center justify-center gap-1.5"
               >
                 Start Free Consultation
-                <span className="text-lg">→</span>
+                <span className="text-sm">→</span>
               </motion.button>
             </Link>
             <Link href="/dashboard">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto h-[56px] px-10 rounded-xl font-semibold text-[#c9a84c] border border-[#c9a84c] bg-transparent transition-all duration-300 flex items-center justify-center gap-2 hover:bg-[#c9a84c]/10"
+                className="w-full sm:w-auto h-10 px-5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent transition-all duration-300 flex items-center justify-center gap-1.5 hover:bg-[#c9a84c]/10"
               >
                 I'm a Lawyer
               </motion.button>
@@ -126,7 +120,7 @@ export function HeroSection() {
           {/* Trust Badges */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center lg:justify-start gap-6 text-[#8892a4] text-sm"
+            className="flex flex-wrap justify-center lg:justify-start gap-4 text-[#8892a4] text-xs"
           >
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-[#c9a84c]" />
@@ -246,20 +240,6 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-[#c9a84c]/30 flex items-start justify-center p-2">
-          <motion.div
-            className="w-1.5 h-3 rounded-full bg-[#c9a84c]"
-            animate={{ y: [0, 8, 0], opacity: [1, 0.5, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
-    </section>
+      </section>
   )
 }

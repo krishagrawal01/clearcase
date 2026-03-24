@@ -82,22 +82,22 @@ export function FeaturesSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="features" className="relative py-24 md:py-32 px-4" ref={ref}>
+    <section id="features" className="relative py-12 md:py-16 px-4" ref={ref}>
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-6">
-            <span className="text-[#c9a84c] text-sm font-medium">Comprehensive Legal Tools</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.2)] mb-4">
+            <span className="text-[#c9a84c] text-xs font-medium">Comprehensive Legal Tools</span>
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#f0f4ff] mb-4">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#f0f4ff] mb-2">
             Everything You Need
           </h2>
-          <p className="text-[#8892a4] text-lg max-w-2xl mx-auto">
+          <p className="text-[#8892a4] text-base max-w-2xl mx-auto">
             Powerful legal tools designed specifically for modern India
           </p>
         </motion.div>
@@ -107,7 +107,7 @@ export function FeaturesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-2 gap-6 mb-12"
+          className="grid md:grid-cols-2 gap-4 mb-6"
         >
           {features.map((feature) => (
             <motion.div
@@ -116,33 +116,33 @@ export function FeaturesSection() {
               className="group relative"
             >
               <Link href={feature.href}>
-                <div className="relative p-8 rounded-2xl bg-[#0a1628] border border-[rgba(255,255,255,0.06)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:shadow-xl hover:shadow-[rgba(201,168,76,0.05)] h-full">
+                <div className="relative p-5 rounded-xl bg-[#0a1628] border border-[rgba(255,255,255,0.06)] transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.05)] h-full">
                   {/* Hover glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[rgba(201,168,76,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[rgba(201,168,76,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   {/* Header with icon and stat */}
-                  <div className="relative flex items-start justify-between mb-6">
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.gradient}`}>
-                      <feature.icon className="w-7 h-7 text-[#050d1f]" />
+                  <div className="relative flex items-start justify-between mb-4">
+                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${feature.gradient}`}>
+                      <feature.icon className="w-5 h-5 text-[#050d1f]" />
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-[#c9a84c]">{feature.stat}</div>
-                      <div className="text-xs text-[#8892a4]">{feature.statLabel}</div>
+                      <div className="text-lg font-bold text-[#c9a84c]">{feature.stat}</div>
+                      <div className="text-[10px] text-[#8892a4]">{feature.statLabel}</div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="relative font-serif text-xl md:text-2xl font-bold text-[#f0f4ff] mb-3">
+                  <h3 className="relative font-serif text-lg font-bold text-[#f0f4ff] mb-2">
                     {feature.title}
                   </h3>
-                  <p className="relative text-[#8892a4] leading-relaxed mb-6">
+                  <p className="relative text-[#8892a4] leading-relaxed text-sm mb-4">
                     {feature.description}
                   </p>
 
                   {/* Learn more link */}
-                  <div className="relative inline-flex items-center gap-2 text-[#c9a84c] font-medium text-sm group/link">
+                  <div className="relative inline-flex items-center gap-1.5 text-[#c9a84c] font-medium text-xs group/link">
                     <span>Get Started</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
@@ -152,19 +152,19 @@ export function FeaturesSection() {
 
         {/* Additional Features Row */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-3"
         >
-          {additionalFeatures.map((item, index) => (
+          {additionalFeatures.map((item) => (
             <div
               key={item.label}
-              className="p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] text-center"
+              className="p-3 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] text-center"
             >
-              <item.icon className="w-5 h-5 text-[#c9a84c] mx-auto mb-2" />
-              <div className="text-[#f0f4ff] font-semibold text-sm mb-1">{item.value}</div>
-              <div className="text-[#8892a4] text-xs">{item.label}</div>
+              <item.icon className="w-4 h-4 text-[#c9a84c] mx-auto mb-1.5" />
+              <div className="text-[#f0f4ff] font-semibold text-xs mb-0.5">{item.value}</div>
+              <div className="text-[#8892a4] text-[10px]">{item.label}</div>
             </div>
           ))}
         </motion.div>
