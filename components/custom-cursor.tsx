@@ -30,9 +30,9 @@ function CustomCursorInner() {
 
   return (
     <motion.div
-      className="fixed w-2 h-2 bg-[#c9a84c] rounded-full pointer-events-none z-[9999] hidden md:block"
+      className="fixed w-2 h-2 bg-[#6366f1] rounded-full pointer-events-none z-[9999] hidden md:block"
       style={{
-        boxShadow: '0 0 10px rgba(201, 168, 76, 0.5), 0 0 20px rgba(201, 168, 76, 0.3)',
+        boxShadow: '0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3)',
       }}
       animate={{
         x: position.x - 4,
