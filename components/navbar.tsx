@@ -76,6 +76,15 @@ export function Navbar() {
                 Start Free Consultation
               </motion.button>
             </Link>
+            <Link href="/dashboard">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-5 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent hover:bg-[#c9a84c]/10 transition-colors"
+              >
+                I'm a Lawyer
+              </motion.button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -108,6 +117,11 @@ export function Navbar() {
             <Link href="/get-help" onClick={() => setMobileMenuOpen(false)}>
               <button className="w-full mt-4 px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] gold-shimmer">
                 Start Free Consultation
+              </button>
+            </Link>
+            <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+              <button className="w-full mt-3 px-5 py-2.5 rounded-lg font-medium text-sm text-[#c9a84c] border border-[#c9a84c] bg-transparent">
+                I'm a Lawyer
               </button>
             </Link>
           </motion.div>

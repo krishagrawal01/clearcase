@@ -1,10 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Lock, Zap, Scale } from 'lucide-react'
-import { DemoModal } from '@/components/demo-modal'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,8 +28,6 @@ const itemVariants = {
 }
 
 export function HeroSection() {
-  const [isDemoOpen, setIsDemoOpen] = useState(false)
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <motion.div
@@ -73,15 +69,15 @@ export function HeroSection() {
               <span className="text-lg">→</span>
             </motion.button>
           </Link>
-          <motion.button
-            onClick={() => setIsDemoOpen(true)}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto h-[52px] px-8 rounded-xl font-semibold text-[#c9a84c] border border-[#c9a84c] bg-[#0f1e3d] transition-all duration-300 flex items-center justify-center gap-2 hover:bg-gradient-to-r hover:from-[#c9a84c] hover:via-[#e8d48a] hover:to-[#c9a84c] hover:text-[#050d1f]"
-          >
-            Watch Demo
-            <span className="text-lg">▶</span>
-          </motion.button>
+          <Link href="/dashboard" className="w-full sm:w-auto">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto h-[52px] px-8 rounded-xl font-semibold text-[#c9a84c] border border-[#c9a84c] bg-transparent transition-all duration-300 flex items-center justify-center gap-2 hover:bg-[#c9a84c]/10"
+            >
+              I'm a Lawyer
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Trust Badges */}
@@ -103,9 +99,6 @@ export function HeroSection() {
           </div>
         </motion.div>
       </motion.div>
-
-      {/* Demo Modal */}
-      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </section>
   )
 }
