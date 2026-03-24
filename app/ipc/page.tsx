@@ -242,10 +242,10 @@ const legalSections: LegalSection[] = [
 
 const popularSections = [
   { ipc: '302', bns: '103', label: 'Murder', color: 'from-red-500/20 to-red-600/10 border-red-500/30 text-red-400' },
-  { ipc: '420', bns: '318', label: 'Fraud', color: 'from-orange-500/20 to-orange-600/10 border-orange-500/30 text-orange-400' },
+  { ipc: '420', bns: '318', label: 'Fraud', color: 'from-amber-500/20 to-amber-600/10 border-amber-500/30 text-amber-400' },
   { ipc: '376', bns: '64', label: 'Rape', color: 'from-purple-500/20 to-purple-600/10 border-purple-500/30 text-purple-400' },
-  { ipc: '498A', bns: '85', label: 'Domestic Violence', color: 'from-pink-500/20 to-pink-600/10 border-pink-500/30 text-pink-400' },
-  { ipc: '304B', bns: '80', label: 'Dowry Death', color: 'from-rose-500/20 to-rose-600/10 border-rose-500/30 text-rose-400' },
+  { ipc: '498A', bns: '85', label: 'Domestic Violence', color: 'from-violet-500/20 to-violet-600/10 border-violet-500/30 text-violet-400' },
+  { ipc: '304B', bns: '80', label: 'Dowry Death', color: 'from-red-500/20 to-red-600/10 border-red-500/30 text-red-400' },
   { ipc: '354', bns: '74', label: 'Molestation', color: 'from-violet-500/20 to-violet-600/10 border-violet-500/30 text-violet-400' },
 ]
 
@@ -346,8 +346,11 @@ export default function IPCFinderPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)] mb-6">
-              <BookOpen className="w-4 h-4 text-[#6366f1]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.3)] mb-6">
+              <div className="relative">
+                <BookOpen className="w-4 h-4 text-[#6366f1]" />
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#6366f1] rounded-full animate-pulse" />
+              </div>
               <span className="text-sm text-[#6366f1] font-medium">Indian Legal Database</span>
             </div>
             
@@ -368,7 +371,7 @@ export default function IPCFinderPage() {
                 onClick={() => setLawType('both')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   lawType === 'both'
-                    ? 'bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] text-[#050d1f]'
+                    ? 'bg-[#6366f1] text-white'
                     : 'text-[#8892a4] hover:text-[#f0f4ff]'
                 }`}
               >
@@ -378,7 +381,7 @@ export default function IPCFinderPage() {
                 onClick={() => setLawType('ipc')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   lawType === 'ipc'
-                    ? 'bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] text-[#050d1f]'
+                    ? 'bg-[#6366f1] text-white'
                     : 'text-[#8892a4] hover:text-[#f0f4ff]'
                 }`}
               >
@@ -388,7 +391,7 @@ export default function IPCFinderPage() {
                 onClick={() => setLawType('bns')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   lawType === 'bns'
-                    ? 'bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] text-[#050d1f]'
+                    ? 'bg-[#6366f1] text-white'
                     : 'text-[#8892a4] hover:text-[#f0f4ff]'
                 }`}
               >
@@ -409,11 +412,11 @@ export default function IPCFinderPage() {
           >
             <button
               onClick={() => setShowConverter(!showConverter)}
-              className="w-full flex items-center justify-between p-4 bg-[#0a1628] border border-[rgba(201,168,76,0.2)] rounded-xl hover:border-[#c9a84c] transition-colors"
+              className="w-full flex items-center justify-between p-4 bg-[#0a1628] border border-[rgba(99,102,241,0.2)] rounded-xl hover:border-[#6366f1] transition-colors"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#c9a84c]/20 to-[#e8d48a]/10 flex items-center justify-center">
-                  <RefreshCw className="w-5 h-5 text-[#c9a84c]" />
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#6366f1]/20 to-[#8b5cf6]/10 flex items-center justify-center">
+                  <RefreshCw className="w-5 h-5 text-[#6366f1]" />
                 </div>
                 <div className="text-left">
                   <h3 className="text-[#f0f4ff] font-semibold">IPC to BNS Converter</h3>
@@ -421,7 +424,7 @@ export default function IPCFinderPage() {
                 </div>
               </div>
               <motion.div animate={{ rotate: showConverter ? 180 : 0 }}>
-                <ChevronDown className="w-5 h-5 text-[#c9a84c]" />
+                <ChevronDown className="w-5 h-5 text-[#6366f1]" />
               </motion.div>
             </button>
 
@@ -433,7 +436,7 @@ export default function IPCFinderPage() {
                   exit={{ height: 0, opacity: 0 }}
                   className="overflow-hidden"
                 >
-                  <div className="p-6 bg-[#0a1628] border-x border-b border-[rgba(201,168,76,0.2)] rounded-b-xl -mt-2">
+                  <div className="p-6 bg-[#0a1628] border-x border-b border-[rgba(99,102,241,0.2)] rounded-b-xl -mt-2">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="flex-1">
                         <label className="text-[#8892a4] text-sm mb-2 block">Enter IPC Section Number</label>
@@ -443,13 +446,13 @@ export default function IPCFinderPage() {
                             value={converterInput}
                             onChange={(e) => setConverterInput(e.target.value)}
                             placeholder="e.g., 302, 420, 376"
-                            className="flex-1 bg-[#050d1f] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 text-[#f0f4ff] placeholder-[#5a6478] focus:border-[#c9a84c] focus:outline-none"
+                            className="flex-1 bg-[#050d1f] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 text-[#f0f4ff] placeholder-[#5a6478] focus:border-[#6366f1] focus:shadow-[0_0_10px_rgba(99,102,241,0.3)] focus:outline-none"
                           />
                           <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleConvert}
-                            className="px-6 py-3 bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] text-[#050d1f] font-semibold rounded-lg"
+                            className="px-6 py-3 bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold rounded-lg"
                           >
                             Convert
                           </motion.button>
@@ -499,10 +502,10 @@ export default function IPCFinderPage() {
         >
           {/* Search Box */}
           <div className="relative mb-6">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] rounded-2xl blur-xl opacity-20" />
-            <div className="relative bg-[#0a1628] border border-[rgba(201,168,76,0.3)] rounded-2xl p-2">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-2xl blur-xl opacity-20" />
+            <div className="relative bg-[#0a1628] border border-[rgba(99,102,241,0.3)] rounded-2xl p-2">
               <div className="flex items-center gap-3 px-4">
-                <Search className="w-5 h-5 text-[#c9a84c]" />
+                <Search className="w-5 h-5 text-[#6366f1]" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -556,7 +559,7 @@ export default function IPCFinderPage() {
                 exit={{ opacity: 0, y: -20 }}
                 className="text-center py-12"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(201,168,76,0.1)] flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[rgba(99,102,241,0.1)] flex items-center justify-center">
                   <Search className="w-8 h-8 text-[#5a6478]" />
                 </div>
                 <p className="text-[#8892a4] text-lg">No sections found for "{searchQuery}"</p>
@@ -571,7 +574,7 @@ export default function IPCFinderPage() {
               >
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-[#f0f4ff] font-medium">
-                    Found <span className="text-[#c9a84c]">{filteredSections.length}</span> relevant sections
+                    Found <span className="text-[#6366f1]">{filteredSections.length}</span> relevant sections
                   </h2>
                 </div>
 
@@ -582,7 +585,7 @@ export default function IPCFinderPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
                   >
-                    <div className="bg-[#0a1628] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden hover:border-[rgba(201,168,76,0.3)] transition-all">
+                    <div className="bg-[#0a1628] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden hover:border-[rgba(99,102,241,0.3)] transition-all">
                       {/* Header */}
                       <div className="p-6 border-b border-[rgba(255,255,255,0.08)]">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -595,10 +598,10 @@ export default function IPCFinderPage() {
                                   </span>
                                 )}
                                 {lawType === 'both' && (
-                                  <ArrowRight className="w-4 h-4 text-[#c9a84c]" />
+                                  <ArrowRight className="w-4 h-4 text-[#6366f1]" />
                                 )}
                                 {(lawType === 'both' || lawType === 'bns') && (
-                                  <span className="inline-flex items-center px-3 py-1 rounded-lg bg-gradient-to-r from-[#c9a84c] to-[#e8d48a] text-[#050d1f] font-bold text-sm">
+                                  <span className="inline-flex items-center px-3 py-1 rounded-lg bg-[#6366f1] text-white font-bold text-sm">
                                     BNS {section.bnsSection}
                                   </span>
                                 )}
@@ -651,14 +654,14 @@ export default function IPCFinderPage() {
                         {(lawType === 'both' || lawType === 'bns') && (
                           <div className="p-6">
                             <div className="flex items-center gap-2 mb-4">
-                              <div className="w-2 h-2 rounded-full bg-[#c9a84c]" />
-                              <h4 className="text-[#c9a84c] font-semibold text-sm uppercase tracking-wider">Bharatiya Nyaya Sanhita (2023)</h4>
+                              <div className="w-2 h-2 rounded-full bg-[#6366f1]" />
+                              <h4 className="text-[#6366f1] font-semibold text-sm uppercase tracking-wider">Bharatiya Nyaya Sanhita (2023)</h4>
                             </div>
                             <p className="text-[#8892a4] text-sm leading-relaxed mb-4">{section.bnsDescription}</p>
-                            <div className="bg-[rgba(201,168,76,0.05)] border border-[rgba(201,168,76,0.2)] rounded-xl p-4">
+                            <div className="bg-[rgba(99,102,241,0.05)] border border-[rgba(99,102,241,0.2)] rounded-xl p-4">
                               <div className="flex items-center gap-2 mb-2">
-                                <Gavel className="w-4 h-4 text-[#c9a84c]" />
-                                <span className="text-[#c9a84c] text-xs uppercase tracking-wider">Punishment</span>
+                                <Gavel className="w-4 h-4 text-[#6366f1]" />
+                                <span className="text-[#6366f1] text-xs uppercase tracking-wider">Punishment</span>
                               </div>
                               <p className="text-[#f0f4ff] text-sm font-medium">{section.bnsPunishment}</p>
                             </div>
@@ -668,16 +671,16 @@ export default function IPCFinderPage() {
 
                       {/* Key Changes */}
                       {lawType === 'both' && section.changes.length > 0 && (
-                        <div className="p-6 bg-[rgba(234,179,8,0.05)] border-t border-[rgba(234,179,8,0.2)]">
+                        <div className="p-6 bg-[rgba(99,102,241,0.05)] border-t border-[rgba(99,102,241,0.2)]">
                           <div className="flex items-center gap-2 mb-3">
-                            <Sparkles className="w-4 h-4 text-yellow-500" />
-                            <h4 className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Key Changes in BNS</h4>
+                            <Sparkles className="w-4 h-4 text-[#6366f1]" />
+                            <h4 className="text-[#6366f1] font-semibold text-sm uppercase tracking-wider">Key Changes in BNS</h4>
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {section.changes.map((change, i) => (
                               <span
                                 key={i}
-                                className="inline-flex items-center px-3 py-1.5 rounded-lg bg-yellow-500/10 text-yellow-400 text-sm border border-yellow-500/30"
+                                className="inline-flex items-center px-3 py-1.5 rounded-lg bg-[rgba(99,102,241,0.1)] text-[#6366f1] text-sm border border-[rgba(99,102,241,0.3)]"
                               >
                                 {change}
                               </span>
@@ -689,7 +692,7 @@ export default function IPCFinderPage() {
                       {/* Expand Button */}
                       <button
                         onClick={() => setExpandedSection(expandedSection === section.ipcSection ? null : section.ipcSection)}
-                        className="w-full p-4 flex items-center justify-center gap-2 text-[#8892a4] hover:text-[#c9a84c] transition-colors border-t border-[rgba(255,255,255,0.08)]"
+                        className="w-full p-4 flex items-center justify-center gap-2 text-[#8892a4] hover:text-[#6366f1] transition-colors border-t border-[rgba(255,255,255,0.08)]"
                       >
                         <span className="text-sm">{expandedSection === section.ipcSection ? 'Show Less' : 'Show More Details'}</span>
                         <motion.div animate={{ rotate: expandedSection === section.ipcSection ? 180 : 0 }}>
@@ -710,7 +713,7 @@ export default function IPCFinderPage() {
                               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                                 <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
                                   <div className="flex items-center gap-2 mb-2">
-                                    <Clock className="w-4 h-4 text-[#c9a84c]" />
+                                    <Clock className="w-4 h-4 text-[#6366f1]" />
                                     <span className="text-[#8892a4] text-xs uppercase">Jail Term</span>
                                   </div>
                                   <p className="text-[#f0f4ff] font-semibold">{section.jailTerm}</p>
@@ -741,14 +744,14 @@ export default function IPCFinderPage() {
                                 </div>
                                 <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
                                   <div className="flex items-center gap-2 mb-2">
-                                    <Bookmark className="w-4 h-4 text-[#c9a84c]" />
+                                    <Bookmark className="w-4 h-4 text-[#6366f1]" />
                                     <span className="text-[#8892a4] text-xs uppercase">Quick Ref</span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <span className="text-[#8892a4]">IPC</span>
                                     <span className="text-[#f0f4ff] font-bold">{section.ipcSection}</span>
                                     <ArrowRight className="w-3 h-3 text-[#5a6478]" />
-                                    <span className="text-[#c9a84c]">BNS</span>
+                                    <span className="text-[#6366f1]">BNS</span>
                                     <span className="text-[#f0f4ff] font-bold">{section.bnsSection}</span>
                                   </div>
                                 </div>
@@ -768,8 +771,8 @@ export default function IPCFinderPage() {
                 className="text-center py-12"
               >
                 <div className="max-w-lg mx-auto">
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#c9a84c]/20 to-[#e8d48a]/10 flex items-center justify-center border border-[rgba(201,168,76,0.2)]">
-                    <Scale className="w-12 h-12 text-[#c9a84c]" />
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#6366f1]/20 to-[#8b5cf6]/10 flex items-center justify-center border border-[rgba(99,102,241,0.3)]">
+                    <Scale className="w-12 h-12 text-[#6366f1]" />
                   </div>
                   <h3 className="text-2xl font-semibold text-[#f0f4ff] mb-3">Indian Legal Code Database</h3>
                   <p className="text-[#8892a4] mb-8">
@@ -778,29 +781,29 @@ export default function IPCFinderPage() {
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-xl mx-auto">
                     <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
-                      <div className="w-8 h-8 rounded-lg bg-[rgba(201,168,76,0.1)] flex items-center justify-center mb-2">
-                        <Search className="w-4 h-4 text-[#c9a84c]" />
+                      <div className="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.1)] flex items-center justify-center mb-2">
+                        <Search className="w-4 h-4 text-[#6366f1]" />
                       </div>
                       <p className="text-[#f0f4ff] text-sm font-medium">Section Search</p>
                       <p className="text-[#5a6478] text-xs">Find by number</p>
                     </div>
                     <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
-                      <div className="w-8 h-8 rounded-lg bg-[rgba(201,168,76,0.1)] flex items-center justify-center mb-2">
-                        <RefreshCw className="w-4 h-4 text-[#c9a84c]" />
+                      <div className="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.1)] flex items-center justify-center mb-2">
+                        <RefreshCw className="w-4 h-4 text-[#6366f1]" />
                       </div>
                       <p className="text-[#f0f4ff] text-sm font-medium">IPC to BNS</p>
                       <p className="text-[#5a6478] text-xs">Convert sections</p>
                     </div>
                     <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
-                      <div className="w-8 h-8 rounded-lg bg-[rgba(201,168,76,0.1)] flex items-center justify-center mb-2">
-                        <Gavel className="w-4 h-4 text-[#c9a84c]" />
+                      <div className="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.1)] flex items-center justify-center mb-2">
+                        <Gavel className="w-4 h-4 text-[#6366f1]" />
                       </div>
                       <p className="text-[#f0f4ff] text-sm font-medium">Punishments</p>
                       <p className="text-[#5a6478] text-xs">Jail & fine details</p>
                     </div>
                     <div className="bg-[#0a1628] rounded-xl p-4 border border-[rgba(255,255,255,0.08)]">
-                      <div className="w-8 h-8 rounded-lg bg-[rgba(201,168,76,0.1)] flex items-center justify-center mb-2">
-                        <Sparkles className="w-4 h-4 text-[#c9a84c]" />
+                      <div className="w-8 h-8 rounded-lg bg-[rgba(99,102,241,0.1)] flex items-center justify-center mb-2">
+                        <Sparkles className="w-4 h-4 text-[#6366f1]" />
                       </div>
                       <p className="text-[#f0f4ff] text-sm font-medium">Key Changes</p>
                       <p className="text-[#5a6478] text-xs">IPC vs BNS diff</p>
@@ -816,11 +819,11 @@ export default function IPCFinderPage() {
       {/* Disclaimer */}
       <section className="relative z-10 px-4 pb-16">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-[rgba(201,168,76,0.05)] border border-[rgba(201,168,76,0.2)] rounded-xl p-6">
+          <div className="bg-[rgba(99,102,241,0.05)] border border-[rgba(99,102,241,0.2)] rounded-xl p-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-[#6366f1] flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-[#c9a84c] font-semibold mb-2">Legal Disclaimer</h4>
+                <h4 className="text-[#6366f1] font-semibold mb-2">Legal Disclaimer</h4>
                 <p className="text-[#8892a4] text-sm leading-relaxed">
                   This information is for general awareness only. The Bharatiya Nyaya Sanhita (BNS) 2023 replaced the Indian Penal Code (IPC) 1860 
                   with effect from July 1, 2024. Sections may have amendments, exceptions, and judicial interpretations that affect their application. 

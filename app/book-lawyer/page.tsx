@@ -253,7 +253,7 @@ export default function BookLawyerPage() {
                     className="font-serif text-4xl md:text-5xl font-bold text-[#f0f4ff] mb-4"
                   >
                     Book a{' '}
-                    <span className="bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] bg-clip-text text-transparent">
+                    <span className="text-[#6366f1]">
                       Consultation
                     </span>
                   </motion.h1>
@@ -273,7 +273,7 @@ export default function BookLawyerPage() {
                       placeholder="Search lawyers by name or specialization..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] placeholder-[#8892a4] focus:outline-none focus:border-[rgba(201,168,76,0.3)] transition-colors"
+                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] placeholder-[#8892a4] focus:outline-none focus:border-[#6366f1] focus:shadow-[0_0_10px_rgba(99,102,241,0.3)] transition-colors"
                     />
                   </div>
 
@@ -284,7 +284,7 @@ export default function BookLawyerPage() {
                       <select
                         value={selectedFilter}
                         onChange={(e) => setSelectedFilter(e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] focus:outline-none focus:border-[rgba(201,168,76,0.3)] transition-colors appearance-none"
+                        className="w-full pl-12 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] focus:outline-none focus:border-[#6366f1] focus:shadow-[0_0_10px_rgba(99,102,241,0.3)] transition-colors appearance-none"
                       >
                         {specializations.map((spec) => (
                           <option key={spec.id} value={spec.id} className="bg-[#0a1628]">
@@ -304,8 +304,8 @@ export default function BookLawyerPage() {
                       onClick={() => setSelectedFilter(spec.id)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                         selectedFilter === spec.id
-                          ? 'bg-[#c9a84c] text-[#050d1f]'
-                          : 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(201,168,76,0.3)] hover:text-[#f0f4ff]'
+                          ? 'bg-[#6366f1] text-white'
+                          : 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[#6366f1] hover:text-[#f0f4ff]'
                       }`}
                     >
                       {spec.label}
@@ -321,12 +321,12 @@ export default function BookLawyerPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="relative rounded-2xl p-6 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(201,168,76,0.2)] transition-all duration-300 group"
+                      className="relative rounded-2xl p-6 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-300 group"
                     >
                       <div className="flex gap-4">
                         {/* Avatar Placeholder */}
                         <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-[#1a2a4a] to-[#0a1628] flex items-center justify-center flex-shrink-0 border border-[rgba(255,255,255,0.08)]">
-                          <Scale className="w-8 h-8 text-[#c9a84c]" />
+                          <Scale className="w-8 h-8 text-[#6366f1]" />
                         </div>
 
                         {/* Lawyer Info */}
@@ -334,7 +334,7 @@ export default function BookLawyerPage() {
                           <h3 className="text-lg font-semibold text-[#f0f4ff] mb-1 truncate">
                             {lawyer.name}
                           </h3>
-                          <p className="text-sm text-[#c9a84c] mb-2">{lawyer.specializationLabel}</p>
+                          <p className="text-sm text-[#6366f1] mb-2">{lawyer.specializationLabel}</p>
                           
                           <div className="flex flex-wrap items-center gap-3 text-sm text-[#8892a4]">
                             <span className="flex items-center gap-1">
@@ -342,7 +342,7 @@ export default function BookLawyerPage() {
                               {lawyer.experience} yrs
                             </span>
                             <span className="flex items-center gap-1">
-                              <Star className="w-4 h-4 text-[#c9a84c] fill-[#c9a84c]" />
+                              <Star className="w-4 h-4 text-[#f59e0b] fill-[#f59e0b]" />
                               {lawyer.rating} ({lawyer.reviews})
                             </span>
                           </div>
@@ -357,7 +357,7 @@ export default function BookLawyerPage() {
                         {lawyer.languages.map((lang) => (
                           <span
                             key={lang}
-                            className="px-2 py-1 text-xs rounded-md bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.06)]"
+                            className="px-2 py-1 text-xs rounded-md bg-[rgba(99,102,241,0.1)] text-[#6366f1] border border-[rgba(99,102,241,0.3)]"
                           >
                             {lang}
                           </span>
@@ -366,14 +366,14 @@ export default function BookLawyerPage() {
 
                       <div className="flex items-center justify-between mt-6 pt-4 border-t border-[rgba(255,255,255,0.06)]">
                         <div className="flex items-center gap-1">
-                          <IndianRupee className="w-4 h-4 text-[#c9a84c]" />
-                          <span className="text-xl font-bold text-[#f0f4ff]">{lawyer.price}</span>
+                          <IndianRupee className="w-4 h-4 text-[#f8fafc]" />
+                          <span className="text-xl font-bold text-[#f8fafc]">{lawyer.price}</span>
                           <span className="text-sm text-[#8892a4]">/consultation</span>
                         </div>
 
                         <button
                           onClick={() => handleBookConsultation(lawyer)}
-                          className="px-5 py-2.5 rounded-lg font-medium text-sm text-[#050d1f] bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.2)] transition-all duration-300"
+                          className="px-5 py-2.5 rounded-lg font-medium text-sm text-white bg-[#6366f1] hover:bg-[#4f46e5] hover:shadow-lg hover:shadow-[rgba(99,102,241,0.3)] transition-all duration-300"
                         >
                           Book Consultation
                         </button>
@@ -403,7 +403,7 @@ export default function BookLawyerPage() {
               >
                 <button
                   onClick={handleBackToList}
-                  className="flex items-center gap-2 text-[#8892a4] hover:text-[#c9a84c] transition-colors mb-8"
+                  className="flex items-center gap-2 text-[#8892a4] hover:text-[#6366f1] transition-colors mb-8"
                 >
                   <ArrowLeft className="w-5 h-5" />
                   Back to lawyers
@@ -415,13 +415,13 @@ export default function BookLawyerPage() {
                   </h2>
 
                   {/* Selected Lawyer Card */}
-                  <div className="flex gap-4 p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(201,168,76,0.2)] mb-8">
+                  <div className="flex gap-4 p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(99,102,241,0.3)] mb-8">
                     <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#1a2a4a] to-[#0a1628] flex items-center justify-center flex-shrink-0 border border-[rgba(255,255,255,0.08)]">
-                      <Scale className="w-6 h-6 text-[#c9a84c]" />
+                      <Scale className="w-6 h-6 text-[#6366f1]" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-[#f0f4ff]">{selectedLawyer.name}</h3>
-                      <p className="text-sm text-[#c9a84c]">{selectedLawyer.specializationLabel}</p>
+                      <p className="text-sm text-[#6366f1]">{selectedLawyer.specializationLabel}</p>
                       <div className="flex items-center gap-1 mt-1">
                         <IndianRupee className="w-4 h-4 text-[#8892a4]" />
                         <span className="text-[#f0f4ff] font-semibold">{selectedLawyer.price}</span>
@@ -446,8 +446,8 @@ export default function BookLawyerPage() {
                             onClick={() => setSelectedDate(date.value)}
                             className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                               selectedDate === date.value
-                                ? 'bg-[#c9a84c] text-[#050d1f]'
-                                : 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(201,168,76,0.3)]'
+                                ? 'bg-[#6366f1] text-white'
+                                : 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[#6366f1]'
                             }`}
                           >
                             {date.label}
@@ -473,9 +473,9 @@ export default function BookLawyerPage() {
                               onClick={() => setSelectedTime(time)}
                               className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
                                 selectedTime === time
-                                  ? 'bg-[#c9a84c] text-[#050d1f]'
+                                  ? 'bg-[#6366f1] text-white'
                                   : isAvailable
-                                  ? 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(201,168,76,0.3)]'
+                                  ? 'bg-[rgba(255,255,255,0.04)] text-[#8892a4] border border-[rgba(255,255,255,0.08)] hover:border-[#6366f1]'
                                   : 'bg-[rgba(255,255,255,0.02)] text-[#555] border border-[rgba(255,255,255,0.04)] cursor-not-allowed'
                               }`}
                             >
@@ -497,7 +497,7 @@ export default function BookLawyerPage() {
                         placeholder="Briefly describe your legal matter so the lawyer can prepare for your consultation..."
                         rows={4}
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] placeholder-[#8892a4] focus:outline-none focus:border-[rgba(201,168,76,0.3)] transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#f0f4ff] placeholder-[#8892a4] focus:outline-none focus:border-[#6366f1] focus:shadow-[0_0_10px_rgba(99,102,241,0.3)] transition-colors resize-none"
                       />
                     </div>
 
@@ -505,7 +505,7 @@ export default function BookLawyerPage() {
                     <button
                       type="submit"
                       disabled={!selectedDate || !selectedTime || !caseDescription}
-                      className="w-full py-4 rounded-xl font-semibold text-[#050d1f] bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+                      className="w-full py-4 rounded-xl font-semibold text-white bg-[#6366f1] hover:bg-[#4f46e5] hover:shadow-lg hover:shadow-[rgba(99,102,241,0.3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
                     >
                       Confirm Booking - ₹{selectedLawyer.price}
                     </button>
@@ -524,14 +524,14 @@ export default function BookLawyerPage() {
                 transition={{ duration: 0.4 }}
                 className="max-w-2xl mx-auto text-center"
               >
-                <div className="rounded-2xl p-8 md:p-12 bg-[rgba(255,255,255,0.02)] border border-[rgba(201,168,76,0.2)]">
+                <div className="rounded-2xl p-8 md:p-12 bg-[rgba(255,255,255,0.02)] border border-[rgba(99,102,241,0.3)]">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-                    className="w-20 h-20 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8d48a] flex items-center justify-center mx-auto mb-6"
+                    className="w-20 h-20 rounded-full bg-[#6366f1] flex items-center justify-center mx-auto mb-6"
                   >
-                    <CheckCircle2 className="w-10 h-10 text-[#050d1f]" />
+                    <CheckCircle2 className="w-10 h-10 text-white" />
                   </motion.div>
 
                   <h2 className="font-serif text-3xl font-bold text-[#f0f4ff] mb-3">
@@ -544,7 +544,7 @@ export default function BookLawyerPage() {
                   <div className="bg-[rgba(255,255,255,0.02)] rounded-xl p-6 border border-[rgba(255,255,255,0.06)] mb-8 text-left">
                     <div className="flex items-center justify-between mb-4 pb-4 border-b border-[rgba(255,255,255,0.06)]">
                       <span className="text-sm text-[#8892a4]">Booking ID</span>
-                      <span className="font-mono text-[#c9a84c] font-semibold">{bookingId}</span>
+                      <span className="font-mono text-[#6366f1] font-semibold">{bookingId}</span>
                     </div>
 
                     <div className="space-y-4">
@@ -573,7 +573,7 @@ export default function BookLawyerPage() {
                       </div>
                       <div className="flex justify-between pt-4 border-t border-[rgba(255,255,255,0.06)]">
                         <span className="text-sm text-[#8892a4]">Amount Paid</span>
-                        <span className="text-[#c9a84c] font-bold text-lg">₹{selectedLawyer.price}</span>
+                        <span className="text-[#f8fafc] font-bold text-lg">₹{selectedLawyer.price}</span>
                       </div>
                     </div>
                   </div>
@@ -581,13 +581,13 @@ export default function BookLawyerPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       onClick={handleNewBooking}
-                      className="flex-1 py-3 rounded-xl font-medium text-[#c9a84c] border border-[rgba(201,168,76,0.3)] hover:border-[#c9a84c] transition-colors"
+                      className="flex-1 py-3 rounded-xl font-medium text-[#6366f1] border border-[rgba(99,102,241,0.3)] hover:border-[#6366f1] transition-colors"
                     >
                       Book Another Consultation
                     </button>
                     <a
                       href="/"
-                      className="flex-1 py-3 rounded-xl font-medium text-[#050d1f] bg-gradient-to-r from-[#c9a84c] via-[#e8d48a] to-[#c9a84c] hover:shadow-lg hover:shadow-[rgba(201,168,76,0.2)] transition-all duration-300 text-center"
+                      className="flex-1 py-3 rounded-xl font-medium text-white bg-[#6366f1] hover:bg-[#4f46e5] hover:shadow-lg hover:shadow-[rgba(99,102,241,0.3)] transition-all duration-300 text-center"
                     >
                       Back to Home
                     </a>
