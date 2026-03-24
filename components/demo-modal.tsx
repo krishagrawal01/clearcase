@@ -72,7 +72,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-2xl md:h-auto z-50"
           >
-            <div className="h-full md:h-auto bg-[#0a1628]/95 backdrop-blur-xl border border-[rgba(201,168,76,0.2)] rounded-2xl shadow-2xl overflow-hidden">
+            <div className="h-full md:h-auto bg-[#0a1628]/95 backdrop-blur-xl border border-[rgba(99,102,241,0.2)] rounded-2xl shadow-2xl overflow-hidden">
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -93,10 +93,10 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     className="text-center"
                   >
                     {/* Icon */}
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c9a84c]/20 to-[#c9a84c]/5 border border-[rgba(201,168,76,0.3)] mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6366f1]/20 to-[#6366f1]/5 border border-[rgba(99,102,241,0.3)] mb-6">
                       {(() => {
                         const IconComponent = slides[currentSlide].icon
-                        return <IconComponent className="w-8 h-8 text-[#c9a84c]" />
+                        return <IconComponent className="w-8 h-8 text-[#6366f1]" />
                       })()}
                     </div>
 
@@ -106,7 +106,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     </h3>
 
                     {/* Caption */}
-                    <p className="text-[#c9a84c] font-medium mb-4">
+                    <p className="text-[#6366f1] font-medium mb-4">
                       {slides[currentSlide].caption}
                     </p>
 
@@ -121,7 +121,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <div className="flex items-center justify-between mt-10">
                   <button
                     onClick={prevSlide}
-                    className="p-3 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[#8892a4] hover:text-[#f0f4ff] hover:border-[rgba(201,168,76,0.3)] transition-all"
+                    className="p-3 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[#8892a4] hover:text-[#f0f4ff] hover:border-[rgba(99,102,241,0.3)] transition-all"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
@@ -134,7 +134,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                         onClick={() => goToSlide(index)}
                         className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                           currentSlide === index
-                            ? 'w-8 bg-gradient-to-r from-[#c9a84c] to-[#e8d48a]'
+                            ? 'w-8 bg-[#6366f1]'
                             : 'bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.3)]'
                         }`}
                       />
@@ -143,7 +143,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
                   <button
                     onClick={nextSlide}
-                    className="p-3 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[#8892a4] hover:text-[#f0f4ff] hover:border-[rgba(201,168,76,0.3)] transition-all"
+                    className="p-3 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[#8892a4] hover:text-[#f0f4ff] hover:border-[rgba(99,102,241,0.3)] transition-all"
                   >
                     <ChevronRight className="w-5 h-5" />
                   </button>

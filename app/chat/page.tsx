@@ -7,13 +7,16 @@ import { ChatSidebar } from '@/components/chat/chat-sidebar'
 import { ChatMessages, type Message } from '@/components/chat/chat-messages'
 import { ChatInput } from '@/components/chat/chat-input'
 import { MobileNav } from '@/components/chat/mobile-nav'
-import { AlimonyCalculator } from '@/components/chat/alimony-calculator'
-import { ChallanEstimator } from '@/components/chat/challan-estimator'
-import { DocumentSelector } from '@/components/chat/document-selector'
-import { PropertySelector } from '@/components/chat/property-selector'
-import { FamilyLawSelector } from '@/components/chat/family-law-selector'
 import { CustomCursor } from '@/components/custom-cursor'
 import { Navbar } from '@/components/navbar'
+import { 
+  ToolButton, 
+  AlimonyPanel, 
+  FineEstimatorPanel, 
+  DocumentChecklistPanel, 
+  StampDutyPanel, 
+  ChildSupportPanel 
+} from '@/components/chat/tool-panel'
 
 const topicLabels: Record<string, string> = {
   divorce: 'Divorce & Separation',
@@ -24,6 +27,15 @@ const topicLabels: Record<string, string> = {
   general: 'General Legal Query',
 }
 
+const topicTools: Record<string, { icon: string; label: string } | null> = {
+  divorce: { icon: '⚖️', label: 'Alimony Calculator' },
+  challan: { icon: '🚗', label: 'Fine Estimator' },
+  documents: { icon: '📋', label: 'Quick Checklist' },
+  property: { icon: '📐', label: 'Stamp Duty Calculator' },
+  family: { icon: '👨‍👩‍👧', label: 'Child Support Estimator' },
+  general: null,
+}
+
 const topicWelcomeMessages: Record<string, string> = {
   divorce: `Namaste! I'm your Divorce & Separation Guide.
 
@@ -32,7 +44,7 @@ I specialize in Indian matrimonial law including:
 • Special Marriage Act, 1954
 • Muslim Personal Law (Shariat) Application Act
 
-Use the Alimony Calculator above to estimate maintenance amounts, then describe your situation below. I'll provide step-by-step guidance on grounds for divorce, procedure, and your legal rights.
+Click the Alimony Calculator button above to estimate maintenance amounts, then describe your situation below. I'll provide step-by-step guidance on grounds for divorce, procedure, and your legal rights.
 
 What would you like to know about divorce proceedings?`,
 
@@ -40,7 +52,7 @@ What would you like to know about divorce proceedings?`,
 
 I can help you understand and resolve traffic violations under the Motor Vehicles Act, 2019 and state-specific traffic rules.
 
-Use the Fine Estimator above to check potential penalties for your violation, then describe your situation. I'll guide you on:
+Click the Fine Estimator button above to check potential penalties for your violation, then describe your situation. I'll guide you on:
 • How to pay or contest a challan
 • Court procedures if needed
 • License suspension rules
@@ -52,7 +64,7 @@ What traffic-related issue can I help you with?`,
 
 I have detailed knowledge of documentation requirements for all major Indian government services and procedures.
 
-Use the Document Finder above to instantly see required documents for passports, licenses, property registration, and more. Then ask me for:
+Click the Quick Checklist button above to instantly see required documents for passports, licenses, property registration, and more. Then ask me for:
 • Additional clarifications
 • State-specific variations
 • Tips to expedite processing
@@ -68,7 +80,7 @@ I can guide you through all types of property matters under Indian law including
 • State-specific land revenue laws
 • RERA for real estate issues
 
-Use the Property Dispute Analyzer above to understand your legal options, then describe your specific situation. I'll help you understand your rights and the legal process.
+Click the Stamp Duty Calculator button above to estimate registration costs, then describe your specific situation. I'll help you understand your rights and the legal process.
 
 What property issue are you facing?`,
 
@@ -81,7 +93,7 @@ I specialize in all aspects of family law in India:
 • Adoption procedures
 • Succession and inheritance
 
-Use the Case Guide above to explore different family law matters, then share your situation. I'll provide compassionate, practical legal guidance.
+Click the Child Support Estimator button above to estimate maintenance amounts, then share your situation. I'll provide compassionate, practical legal guidance.
 
 How can I assist you with your family law matter?`,
 
@@ -111,12 +123,14 @@ function ChatPageContent() {
   const [messages, setMessages] = useState<Message[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const [showWelcome, setShowWelcome] = useState(true)
+  const [activeToolPanel, setActiveToolPanel] = useState<string | null>(null)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   // Handle URL topic parameter changes
   useEffect(() => {
     if (urlTopic && validTopics.includes(urlTopic) && urlTopic !== activeTopic) {
       setActiveTopic(urlTopic)
+      setActiveToolPanel(null)
       const currentWelcome = topicWelcomeMessages[urlTopic] || topicWelcomeMessages.general
       setMessages([{
         id: 'welcome',
@@ -210,6 +224,7 @@ function ChatPageContent() {
   }
 
   const handleNewChat = () => {
+    setActiveToolPanel(null)
     const currentWelcome = topicWelcomeMessages[activeTopic] || topicWelcomeMessages.general
     setMessages([{
       id: 'welcome',
@@ -221,6 +236,7 @@ function ChatPageContent() {
   // Handle topic change - reset messages with new welcome
   const handleTopicChange = (topic: string) => {
     setActiveTopic(topic)
+    setActiveToolPanel(null)
     const currentWelcome = topicWelcomeMessages[topic] || topicWelcomeMessages.general
     setMessages([{
       id: 'welcome',
@@ -228,6 +244,12 @@ function ChatPageContent() {
       content: currentWelcome,
     }])
   }
+
+  const toggleToolPanel = (panelId: string) => {
+    setActiveToolPanel(activeToolPanel === panelId ? null : panelId)
+  }
+
+  const tool = topicTools[activeTopic]
 
   return (
     <div className="flex flex-col h-screen bg-[#0a0a0f] overflow-hidden">
@@ -247,7 +269,7 @@ function ChatPageContent() {
         <main className="flex-1 flex flex-col h-full pb-16 md:pb-0 overflow-hidden">
           {/* Header - Fixed */}
           <header className="flex-shrink-0 flex items-center justify-between px-6 py-4 border-b border-[#1e1e2e] bg-[#0a0a0f]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <h1 className="font-serif text-lg font-semibold text-white">
                 {topicLabels[activeTopic]}
               </h1>
@@ -259,16 +281,39 @@ function ChatPageContent() {
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 AI Active
               </motion.span>
+              {tool && (
+                <ToolButton
+                  icon={tool.icon}
+                  label={tool.label}
+                  onClick={() => toggleToolPanel(activeTopic)}
+                  isActive={activeToolPanel === activeTopic}
+                />
+              )}
             </div>
           </header>
 
-          {/* Topic-specific tools - Fixed at top */}
+          {/* Tool Panels */}
           <div className="flex-shrink-0">
-            {activeTopic === 'divorce' && <AlimonyCalculator />}
-            {activeTopic === 'challan' && <ChallanEstimator />}
-            {activeTopic === 'documents' && <DocumentSelector />}
-            {activeTopic === 'property' && <PropertySelector />}
-            {activeTopic === 'family' && <FamilyLawSelector />}
+            <AlimonyPanel 
+              isOpen={activeToolPanel === 'divorce'} 
+              onClose={() => setActiveToolPanel(null)} 
+            />
+            <FineEstimatorPanel 
+              isOpen={activeToolPanel === 'challan'} 
+              onClose={() => setActiveToolPanel(null)} 
+            />
+            <DocumentChecklistPanel 
+              isOpen={activeToolPanel === 'documents'} 
+              onClose={() => setActiveToolPanel(null)} 
+            />
+            <StampDutyPanel 
+              isOpen={activeToolPanel === 'property'} 
+              onClose={() => setActiveToolPanel(null)} 
+            />
+            <ChildSupportPanel 
+              isOpen={activeToolPanel === 'family'} 
+              onClose={() => setActiveToolPanel(null)} 
+            />
           </div>
 
           {/* Messages Area - Scrollable container with fixed height */}
