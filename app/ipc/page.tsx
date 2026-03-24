@@ -333,7 +333,7 @@ export default function IPCFinderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050d1f] pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0a0a0f] pb-20 md:pb-0">
       <CustomCursor />
       <AnimatedBackground />
       <Navbar />
